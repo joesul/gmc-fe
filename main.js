@@ -106,7 +106,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           console.log(data);
 
           $.ajax({
-            url: localHostUrl + '/jmc/favorites',
+            // url: localHostUrl + '/jmc/favorites',
             url: herokuURL + '/jmc/favorites',
             method: 'POST',
             data: data,
