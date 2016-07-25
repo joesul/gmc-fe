@@ -82,6 +82,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
               })
               .done(function(data) {
                 console.log("touchdown!");
+                console.log(data);
                 setTimeout(function() {
                   faveTeam = data[teamPosition].Name;
                   johnMessage(data[teamPosition][choice]);
