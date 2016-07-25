@@ -110,7 +110,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
             url: herokuURL + '/jmc/favorites',
             method: 'POST',
             data: data,
-            dataType: 'json'
+            dataType: 'jsonp'
           }).done(function(response) {
             console.log(response);
             setTimeout(function() {
