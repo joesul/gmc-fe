@@ -30,7 +30,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   var userTyped = "";
   var team;
 
-  function userMessage(param) {
+  function userMessage() {
     $('#usermsg').keypress(function(e) {
       if (e.which == 13) {
         console.log("1");
@@ -51,8 +51,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         $('.chat-area').append(messageContainer);
         $('.chat-area').animate({scrollTop: $('.chat-area').prop("scrollHeight")}, 400);
         console.log(userTyped);
-        console.log(param);
-        param;
+        pickTeam();
       }
     });
   };
@@ -165,6 +164,6 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   }, 8000);
   setTimeout(function() {
     johnMessage("Pick a team!");
-    userMessage(pickTeam())
+    userMessage();
   }, 10000);
 })
