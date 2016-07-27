@@ -164,6 +164,6 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   }, 8000);
   setTimeout(function() {
     johnMessage("Pick a team!");
-    userMessage(pickTeam);
+    userMessage(pickTeam());
   }, 10000);
 })
