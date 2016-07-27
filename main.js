@@ -51,7 +51,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         $('.chat-area').append(messageContainer);
         $('.chat-area').animate({scrollTop: $('.chat-area').prop("scrollHeight")}, 400);
         console.log(userTyped);
-        param;
+        param();
       }
     });
   };
@@ -164,6 +164,6 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   }, 8000);
   setTimeout(function() {
     johnMessage("Pick a team!");
-    userMessage(pickTeam());
+    userMessage(pickTeam);
   }, 10000);
 })
