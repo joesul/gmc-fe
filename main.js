@@ -30,7 +30,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   var userTyped = "";
   var team;
 
-  function userMessage() {
+  function userMessage(param) {
     $('#usermsg').keypress(function(e) {
       if (e.which == 13) {
         console.log("1");
@@ -51,12 +51,12 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         $('.chat-area').append(messageContainer);
         $('.chat-area').animate({scrollTop: $('.chat-area').prop("scrollHeight")}, 400);
         console.log(userTyped);
-        pickTeam();
+        param;
       }
     });
   };
 
-  function pickTeam() {
+  var pickTeam = function() {
     console.log("2");
     for (var i = 0; i < teamNames.length; i++) {
       for (var j = 0; j <teamNames[i].length; j++){
@@ -164,6 +164,6 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   }, 8000);
   setTimeout(function() {
     johnMessage("Pick a team!");
-    userMessage();
+    userMessage(pickTeam);
   }, 10000);
 })
