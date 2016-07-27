@@ -27,12 +27,14 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   var faveTeam;
   var localHostUrl = 'http://localhost:3000';
   var herokuURL = 'https://floating-taiga-62407.herokuapp.com';
+  var userTyped = "";
+  var team;
 
-  function chooseTeam(){
+  function userMessage(param) {
     $('#usermsg').keypress(function(e) {
       if (e.which == 13) {
-        var userMessage = $('#usermsg').val();
-        console.log(userMessage);
+        console.log("1");
+        userTyped = $('#usermsg').val();
         var messageContainer = document.createElement('div');
         messageContainer.classList.add('messageContainer');
         var messageBox = document.createElement('div');
@@ -42,93 +44,112 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         userImg.classList.add('userImg')
         messageBox.classList.add('talkbubble-user');
         newTxt.classList.add('word');
-        newTxt.innerHTML = userMessage;
+        newTxt.innerHTML = userTyped;
         messageBox.appendChild(newTxt);
         messageContainer.appendChild(userImg);
         messageContainer.appendChild(messageBox);
         $('.chat-area').append(messageContainer);
         $('.chat-area').animate({scrollTop: $('.chat-area').prop("scrollHeight")}, 400);
-
-        for (var i = 0; i < teamNames.length; i++) {
-          for (var j = 0; j <teamNames[i].length; j++){
-            if (userMessage.toLowerCase() === teamNames[i][j]) {
-              $("#usermsg").val('');
-              var team = teamNames[i][0];
-              teamPosition = i;
-              setTimeout(function() {
-                johnMessage("What would you like to know about the " + team + "?");
-              }, 1000);
-              setTimeout(function() {
-                johnMessage("Here are some examples: `Conference`, `Division`, `Wins`, `Losses`, `Touchdowns`.");
-              }, 3000);
-            }
-          }
-        }
-
-        var choices = [["Conferences", "conferences"], ["Division", "division"], ["Wins", "wins"], ["Losses", "losses"], ["Touchdowns", "touchdowns"]];
-
-        for (var k = 0; k < choices.length; k++) {
-          for (var l = 0; l < choices[k].length; l++) {
-            if (userMessage.toLowerCase() == choices[k][l]) {
-              $("#usermsg").val('');
-              choice = choices[k][0];
-
-              var choice;
-              $.ajax({
-                // url: localHostUrl + '/jmc/search',
-                url: herokuURL + '/jmc/search',
-                method: 'POST',
-                dataType: 'json'
-              })
-              .done(function(data) {
-                console.log("touchdown!");
-                console.log(data);
-                setTimeout(function() {
-                  faveTeam = data[teamPosition].Name;
-                  johnMessage(data[teamPosition][choice]);
-                }, 1000)
-                setTimeout(function() {
-                  johnMessage("Do you want to favorite this team?");
-                }, 2000);
-              })
-              .fail(function() {
-                console.log("erROAR!");
-              });
-            }
-          }
-        }
-        if (userMessage.toLowerCase() == ("yes" || "ok" || "sure" || "yea" || "yeah")) {
-          $("#usermsg").val('');
-
-          var data = {
-            team: faveTeam
-          };
-
-          console.log(data);
-
-          $.ajax({
-            // url: localHostUrl + '/jmc/favorites',
-            url: herokuURL + '/jmc/favorites',
-            method: 'POST',
-            data: data,
-            dataType: 'json'
-          }).done(function(response) {
-            console.log(response);
-            setTimeout(function() {
-              johnMessage("Your team has been saved to your favorites!");
-            }, 2000);
-          })
-        }
-        else if (userMessage.toLowerCase() == ("no" || "nope" || "no thanks" || "maybe" || "nah")) {
-          $("#usermsg").val('');
-          setTimeout(function() {
-            johnMessage("Pick another team!");
-          }, 2000);
-        }
-
+        console.log(userTyped);
+        console.log(param);
+        param;
       }
-    })
-  }
+    });
+  };
+
+  function pickTeam() {
+    console.log("2");
+    for (var i = 0; i < teamNames.length; i++) {
+      for (var j = 0; j <teamNames[i].length; j++){
+        if (userTyped.toLowerCase() === teamNames[i][j]) {
+          $('#usermsg').val('');
+          team = teamNames[i][0];
+          teamPosition = i;
+          console.log(teamNames[i][0]);
+          teamStats();
+        }
+      }
+    }
+  };
+
+
+  function teamStats() {
+    setTimeout(function() {
+      johnMessage("What would you like to know about the " + team + "?");
+    }, 1000);
+    setTimeout(function() {
+      johnMessage("Here are some examples: `Conference`, `Division`, `Wins`, `Losses`, `Touchdowns`.");
+    }, 3000);
+
+    var choices = [["Conferences", "conferences"], ["Division", "division"], ["Wins", "wins"], ["Losses", "losses"], ["Touchdowns", "touchdowns"]];
+
+    for (var k = 0; k < choices.length; k++) {
+      for (var l = 0; l < choices[k].length; l++) {
+        if (userTyped.toLowerCase() == choices[k][l]) {
+          $("#usermsg").val('');
+          choice = choices[k][0];
+          console.log(choice);
+        }
+      }
+    }
+  };
+
+
+  //             var choice;
+  //             $.ajax({
+  //               // url: localHostUrl + '/jmc/search',
+  //               url: herokuURL + '/jmc/search',
+  //               method: 'POST',
+  //               dataType: 'json'
+  //             })
+  //             .done(function(data) {
+  //               console.log("touchdown!");
+  //               console.log(data);
+  //               setTimeout(function() {
+  //                 faveTeam = data[teamPosition].Name;
+  //                 johnMessage(data[teamPosition][choice]);
+  //               }, 1000)
+  //               setTimeout(function() {
+  //                 johnMessage("Do you want to favorite this team?");
+  //               }, 2000);
+  //             })
+  //             .fail(function() {
+  //               console.log("erROAR!");
+  //             });
+  //           }
+  //         }
+  //       }
+  //       if (userTyped.toLowerCase() == ("yes" || "ok" || "sure" || "yea" || "yeah")) {
+  //         $("#usermsg").val('');
+  //
+  //         var data = {
+  //           team: faveTeam
+  //         };
+  //
+  //         console.log(data);
+  //
+  //         $.ajax({
+  //           // url: localHostUrl + '/jmc/favorites',
+  //           url: herokuURL + '/jmc/favorites',
+  //           method: 'POST',
+  //           data: data,
+  //           dataType: 'json'
+  //         }).done(function(response) {
+  //           console.log(response);
+  //           setTimeout(function() {
+  //             johnMessage("Your team has been saved to your favorites!");
+  //           }, 2000);
+  //         })
+  //       }
+  //       else if (userTyped.toLowerCase() == ("no" || "nope" || "no thanks" || "maybe" || "nah")) {
+  //         $("#usermsg").val('');
+  //         setTimeout(function() {
+  //           johnMessage("Pick another team!");
+  //         }, 2000);
+  //       }
+  //     }
+  //   })
+  // }
 
   setTimeout(function() {
     johnMessage("Hey, John Madden here!");
@@ -144,6 +165,6 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   }, 8000);
   setTimeout(function() {
     johnMessage("Pick a team!");
-    chooseTeam();
+    userMessage(pickTeam())
   }, 10000);
 })
