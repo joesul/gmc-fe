@@ -56,7 +56,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
     });
   };
 
-  var pickTeam = function() {
+   function pickTeam() {
     console.log("2");
     for (var i = 0; i < teamNames.length; i++) {
       for (var j = 0; j <teamNames[i].length; j++){
