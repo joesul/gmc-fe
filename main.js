@@ -208,6 +208,10 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
       dataType: 'json'
     }).done(function(response){
       console.log(response);
+      johnMessage("You cleared your favorites list!");
+      setTimeout(function() {
+        johnMessage("Type another team name to view more stats!");
+      }, 2000);
     });
   };
 });
