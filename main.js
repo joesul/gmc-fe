@@ -191,7 +191,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         }
         johnMessage(faveList);
         setTimeout(function() {
-          johnMessage("Type 'Clear' to clear your favorite's list!");
+          johnMessage("Type 'Clear' to clear your favorite's list or pick another team!");
         }, 2000);
       }
       else {
