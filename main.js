@@ -172,7 +172,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
       method: 'GET',
       dataType: 'json'
     }).done(function(response){
-      if (res.length){
+      if (response.length){
         console.log(response);
       } else {
         console.log("none found");
