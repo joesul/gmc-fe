@@ -129,7 +129,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           console.log("view");
           viewFaves();
         }
-        else if (userTyped.toLowerCase() == "clear") {
+        else if (userTyped.toLowerCase() == "delete") {
           $("#usermsg").val('');
           console.log("delete");
           deleteFaves();
@@ -203,7 +203,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   function deleteFaves() {
     $.ajax({
       // url: localHostUrl + '/jmc/delete',
-      url: herokuURL + '/jmc',
+      url: herokuURL + '/jmc/delete',
       method: 'DELETE',
       dataType: 'json'
     }).done(function(response){
