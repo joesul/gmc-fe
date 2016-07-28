@@ -200,11 +200,16 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
     });
   }
 
+  var data = {
+
+  };
+
   function deleteFaves() {
     $.ajax({
       // url: localHostUrl + '/jmc/delete',
       url: herokuURL + '/jmc/delete',
       method: 'DELETE',
+      data: data,
       dataType: 'json'
     }).done(function(response){
       console.log(response);
