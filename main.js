@@ -125,10 +125,12 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         }
 
         if (userTyped.toLowerCase() == "view faves") {
+          $("#usermsg").val('');
           console.log("view");
           viewFaves();
         }
         else if (userTyped.toLowerCase() == "clear") {
+          $("#usermsg").val('');
           console.log("delete");
           deleteFaves();
         }
@@ -201,7 +203,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   function deleteFaves() {
     $.ajax({
       // url: localHostUrl + '/jmc/delete',
-      url: herokuURL + '/jmc/favorites',
+      url: herokuURL + '/jmc/delete',
       method: 'DELETE',
       dataType: 'json'
     }).done(function(response){
