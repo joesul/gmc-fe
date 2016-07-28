@@ -200,7 +200,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
 
   function deleteFaves() {
     $.ajax({
-      // url: localHostUrl + '/jmc/favorites',
+      // url: localHostUrl + '/jmc/delete',
       url: herokuURL + '/jmc/favorites',
       method: 'DELETE',
       dataType: 'json'
