@@ -129,7 +129,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           console.log("view");
           viewFaves();
         }
-        else if (userTyped.toLowerCase() == "delete") {
+        else if (userTyped.toLowerCase() == "clear") {
           $("#usermsg").val('');
           console.log("delete");
           deleteFaves();
