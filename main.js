@@ -102,8 +102,8 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           console.log(data);
 
           $.ajax({
-            // url: localHostUrl + '/jmc/favorites',
-            url: herokuURL + '/jmc/favorites',
+            url: localHostUrl + '/jmc/favorites',
+            // url: herokuURL + '/jmc/favorites',
             method: 'POST',
             data: data,
             dataType: 'json'
@@ -143,8 +143,8 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
 
   function getTeamStats(){
     $.ajax({
-      // url: localHostUrl + '/jmc/search',
-      url: herokuURL + '/jmc/search',
+      url: localHostUrl + '/jmc/search',
+      // url: herokuURL + '/jmc/search',
       method: 'POST',
       dataType: 'json'
     })
@@ -167,7 +167,8 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
   function viewFaves() {
     console.log("view");
     $.ajax({
-      url: herokuURL + '/jmc/favorites',
+      url: localHostUrl + '/jmc/favorites',
+      // url: herokuURL + '/jmc/favorites',
       method: 'GET',
       dataType: 'json'
     }).done(function(response){
