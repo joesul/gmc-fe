@@ -176,7 +176,12 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
         console.log(response);
         var faveList = ""
         for (var i = 0; i < response.length; i++){
-          faveList += response[i].team + ", ";
+          if (i === response.length -1){
+            faveList += response[i].team + ".";
+          }
+          else {
+            faveList += response[i].team + ", ";
+          }
         }
         johnMessage(faveList);
       } else {
