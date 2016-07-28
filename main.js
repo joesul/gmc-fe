@@ -113,7 +113,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
               johnMessage("Your team has been saved to your favorites!");
             }, 1000);
             setTimeout(function() {
-              johnMessage("Type 'View Faves' to view your favorite teams!");
+              johnMessage("Type 'View Faves' to view your favorite teams! Or type another team name to view more stats!");
             }, 2000);
           })
         }
