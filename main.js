@@ -111,10 +111,10 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
             console.log(response);
             setTimeout(function() {
               johnMessage("Your team has been saved to your favorites!");
-            }, 2000);
+            }, 1000);
             setTimeout(function() {
               johnMessage("Type 'View Faves' to view your favorite teams!");
-            }, 3000);
+            }, 2000);
           })
         }
         else if (userTyped.toLowerCase() == ("no" || "nope" || "no thanks" || "maybe" || "nah")) {
@@ -174,6 +174,9 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
     }).done(function(response){
       if (response.length){
         console.log(response);
+        for (var i = 0; i < response.length; i++){
+          johnMessage(response[i].team);
+        }
       } else {
         console.log("none found");
       }
