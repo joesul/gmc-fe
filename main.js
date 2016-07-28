@@ -124,7 +124,7 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           }, 2000);
         }
 
-        if (userTyped === ("View Faves" || "view faves")) {
+        if (userTyped === "View Faves") {
           console.log("view");
           viewFaves();
         }
