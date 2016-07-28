@@ -174,9 +174,11 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
     }).done(function(response){
       if (response.length){
         console.log(response);
+        var faveList = ""
         for (var i = 0; i < response.length; i++){
-          johnMessage(response[i].team);
+          faveList += response[i].team + ", ";
         }
+        johnMessage(faveList);
       } else {
         console.log("none found");
       }
