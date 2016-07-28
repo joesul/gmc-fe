@@ -124,9 +124,13 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           }, 2000);
         }
 
-        if (userTyped === "View Faves") {
+        if (userTyped.toLowerCase() == "view faves") {
           console.log("view");
           viewFaves();
+        }
+        else if (userTyped.toLowerCase() == "clear") {
+          console.log("delete");
+          deleteFaves();
         }
       }
     });
@@ -184,9 +188,24 @@ console.log("J-E-T-S! JETS! JETS! JETS!");
           }
         }
         johnMessage(faveList);
-      } else {
-        console.log("none found");
+        setTimeout(function() {
+          johnMessage("Type 'Clear' to clear your favorite's list!");
+        }, 2000);
+      }
+      else {
+        johnMessage("You do not have any teams saved on your list! Type a team name to view team stats!");
       }
     });
   }
+
+  function deleteFaves() {
+    $.ajax({
+      // url: localHostUrl + '/jmc/favorites',
+      url: herokuURL + '/jmc/favorites',
+      method: 'DELETE',
+      dataType: 'json'
+    }).done(function(response){
+      console.log(response);
+    });
+  };
 });
